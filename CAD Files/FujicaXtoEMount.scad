@@ -23,7 +23,7 @@ ffdDelta = 43.5 - 18;
 
 eRingOuterRadius = 23;
 eRingInnerRadius = 22;
-eRingHeight = 2;
+eRingHeight = 1.5;
 eRingDropIn = 5;
 
 fxRingOuterRadius = 25;
@@ -73,7 +73,7 @@ module eMountLensRear(z, eRingBaseHeight) {
 					cylinder(h=2, r=1.33);
 				}
 			}
-			translate([10, -25, eRingBaseHeight-1]) // orientation marker
+			translate([12.5, -23.8, eRingBaseHeight-1]) // orientation marker
          {
 					cylinder(h=1+0.1, d=1.5);	
 			}

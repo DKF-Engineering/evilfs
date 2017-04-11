@@ -51,77 +51,77 @@ union()
  rotate([0,0,90])
  translate([0,0,cage_height+front_flange_height/2])
  difference()
- {
-      difference() // lock
-      {
-         difference()
-         {
-            difference() // flange ring
-               {
-                  cylinder(d=minolta_af_outer_dia, h=front_flange_height, center=true);
-                  cylinder(d=entrance_aperture, h=front_flange_height+0.1, center=true);
-               }
-            union() // 3 mounting holes for external ring
-               {
-                  for(i=[0:2])
-                  {
-                     rotate([0,0,i*120])
-                     translate([external_ring_hole_circle_dia/2,0,0])
-                     cylinder(d=external_ring_hole_dia, h=front_flange_height+0.1, center=true);
-                  }
-               }
-         }
-         rotate([0,0,-90])
-         union() // lock button
-         {
-            translate([minolta_af_inner_dia/2+0.6+lock_button_length/2,0,front_flange_height/2-(1.5-0.1)/2])
-            cube([lock_button_length,lock_button_width,1.5+0.1], center=true);
-            translate([external_ring_hole_circle_dia/2,0,0])
-            cylinder(d=1.1, h=front_flange_height, center=true);
-            translate([external_ring_hole_circle_dia/2,0,front_flange_height/2-(1.5)/2-1])
-            cylinder(d=2.0, h=1, center=true);
-         }
-     }
-   rotate([35,90,0])
-   translate([0,0,minolta_af_outer_dia/2-1/2])
-   cylinder(d=1.5, h=1+0.1, center=true);
-}
+	{
+		difference() // lock
+			{
+				difference()
+					{
+						difference() // flange ring
+							{
+								cylinder(d=minolta_af_outer_dia, h=front_flange_height, center=true);
+								cylinder(d=entrance_aperture, h=front_flange_height+0.1, center=true);
+							}
+						union() // 3 mounting holes for external ring
+							{
+								for(i=[0:2])
+									{
+										rotate([0,0,i*120])
+										translate([external_ring_hole_circle_dia/2,0,0])
+										cylinder(d=external_ring_hole_dia, h=front_flange_height+0.1, center=true);
+									}
+							}
+					}
+				rotate([0,0,-90])
+				union() // lock button
+					{
+						translate([minolta_af_inner_dia/2+0.6+lock_button_length/2,0,front_flange_height/2-(1.5-0.1)/2])
+						cube([lock_button_length,lock_button_width,1.5+0.1], center=true);
+						translate([external_ring_hole_circle_dia/2,0,0])
+						cylinder(d=1.1, h=front_flange_height, center=true);
+						translate([external_ring_hole_circle_dia/2,0,front_flange_height/2-(1.5)/2-1])
+						cylinder(d=2.0, h=1, center=true);
+					}
+			}
+		rotate([35,90,0])
+		translate([0,0,minolta_af_outer_dia/2-1/2])
+		cylinder(d=1.5, h=1+0.1, center=true);
+	}
 
  // filter cage:
+ rotate([0,0,-7])
  rotate([0,0,90])
  rotate([0,0,90])
  translate([0,0,(cage_height)/2])
  difference()
- {
- difference()
- {
- translate([-cage_wall/2,0,0])
- difference()
- {
- difference()
- {
-  translate([cage_wall,0,0]) cube([cage_depth,cage_width,cage_height], center=true);
-  translate([(cage_wall-0.1)/2,0,0]) cube([drawer_d+0.1,drawer_w+drawer_tolerance,drawer_h+drawer_tolerance], center=true);
- }
- rotate([90,90,0]) // fixation screw M4
- translate([0,cage_wall/2,-(cage_width/2-(cage_wall)/2)])
- cylinder(d=3, h=cage_wall+0.1, center=true);
- }
- cylinder(d=optical_aperture, h=cage_height+0.1, center=true);
- }
-  // create chamfer
-  rotate([0,0,45]) 
-  difference()
-  {
-  cube([cage_width*sqrt(2)+0.1,cage_width*sqrt(2)+0.1,cage_height+1+0.1], center=true);
-  cube([cage_width*sqrt(2)-2*cage_chamfer,cage_width*sqrt(2)-2*cage_chamfer,cage_height+1], center=true);
-  }
- }
+	{
+		difference()
+			{
+				translate([-cage_wall/2,0,0])
+				difference()
+					{
+						difference()
+							{
+								translate([cage_wall,0,0]) cube([cage_depth,cage_width,cage_height], center=true);
+								translate([(cage_wall-0.1)/2,0,0]) cube([drawer_d+0.1,drawer_w+drawer_tolerance,drawer_h+drawer_tolerance], center=true);
+							}
+						rotate([90,90,0]) // fixation screw M4
+						translate([0,cage_wall/2,-(cage_width/2-(cage_wall)/2)])
+						cylinder(d=3, h=cage_wall+0.1, center=true);
+					}
+				cylinder(d=optical_aperture, h=cage_height+0.1, center=true);
+			}
+		// create chamfer
+		rotate([0,0,45]) 
+		difference()
+			{
+				cube([cage_width*sqrt(2)+0.1,cage_width*sqrt(2)+0.1,cage_height+1+0.1], center=true);
+				cube([cage_width*sqrt(2)-2*cage_chamfer,cage_width*sqrt(2)-2*cage_chamfer,cage_height+1], center=true);
+			}
+	}
 
  // rear adapter:
  rotate([180,0,-155])
  eMountLensRear(rear_flange_height, rear_flange_height);
- 
 }
 
 
